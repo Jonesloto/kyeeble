@@ -20,11 +20,11 @@ function Candle:__init()
 end
 
 get.version = function(self)
-	return self.__version__
+	return self.__VERSION__
 end
 
 get.author = function(self)
-	return self.__author__
+	return self.__AUTHOR__
 end
 
 return Candle()
