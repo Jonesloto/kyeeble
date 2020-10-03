@@ -27,4 +27,12 @@ get.author = function(self)
 	return self.__AUTHOR__
 end
 
+get.repo = function(self)
+	return self.__REPO__
+end 
+
+get.license = function(self)
+	return self.__LICENSE__
+end
+
 return Candle()
