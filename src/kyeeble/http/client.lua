@@ -10,7 +10,7 @@ end
 
 function HttpClient:get(url, nocache, headers)
     pcall(function ()
-	    returnValue = HttpService:GetAsync(url, nocache, headers)
+	    returnValue = HttpService:GetAsync(HttpService:UrlEncode(url), nocache, headers)
     end)
     
     if response then return ResponseClass(returnValue) else errors.Http("There was an error performing this get request"):raise() end
