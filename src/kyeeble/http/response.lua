@@ -1,4 +1,5 @@
 local class = require(script.Parent.Parent.class)
+local errors = require(script.Parent.Parent.errors)
 local HttpService = game:GetService("HttpService")
 local Response, get = class('Response')
 
@@ -12,9 +13,11 @@ get.body = function(self)
     return self.__body
 end
 
--- TODO: Handle possible error
 get.json = function(self)
-    return HttpService:JSONDecode(self.__body)
+    pcall(function()
+        decoded = HttpService:JSONDecode(self.__body)
+    end)
+    if decoded then return decoded else errors.http("Error occured decoding json"):raise() end
 end
 
 return Response
